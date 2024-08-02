@@ -30,7 +30,7 @@ public class ItemsController {
         try {
             List<Item> items = itemService.getAll();
             Map<String, Object> response = Map.of("items", items);
-
+            
             return jsonResponse(res, response, HttpStatus.OK);
         } catch (ExceptionHandler e) {
             return jsonResponse(res, Map.of("error", e.getMessage()), e.getStatus());

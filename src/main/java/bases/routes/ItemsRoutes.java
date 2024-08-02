@@ -18,13 +18,11 @@ public class ItemsRoutes {
         Service<Item> service = new ItemsService(repository);
         ItemsController controller = new ItemsController(service);
 
-        // before("/*", HttpHeadersMiddleware::validateDateAndAuth);
-        // before("/*", HttpHeadersMiddleware::validateSignature);
 
         get("/", (req, res) -> controller.getItems(req, res));
         get("/:id", (req, res) -> controller.getItem(req, res));
-        post("/create-item", (req, res) -> controller.createItem(req, res));
-        put("/update-item/:id", (req, res) -> controller.updateItem(req, res));
+        post("/", (req, res) -> controller.createItem(req, res));
+        put("/:id", (req, res) -> controller.updateItem(req, res));
         delete("/:id", (req, res) -> controller.deleteItem(req, res));
     }
 
